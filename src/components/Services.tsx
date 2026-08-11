@@ -14,6 +14,7 @@ import {
   MapPinned,
   ClipboardList,
   Compass,
+  HeartPulse,
 } from 'lucide-react'
 
 const SERVICES = [
@@ -32,6 +33,7 @@ const SERVICES = [
   { icon: MapPinned, title: 'Facility Management', desc: 'Day-to-day operational support across facilities.' },
   { icon: ClipboardList, title: 'Project Management', desc: 'Disciplined planning, tracking, and reporting.' },
   { icon: Compass, title: 'Engineering Consultancy', desc: 'Technical advisory across the project lifecycle.' },
+  { icon: HeartPulse, title: 'Medical Equipment Solutions', desc: 'Supply, installation, calibration, and maintenance of healthcare equipment.' },
 ]
 
 export default function Services() {
