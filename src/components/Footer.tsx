@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: 'Services', href: '#services' },
   { label: 'Smart Systems', href: '#smart-systems' },
   { label: 'Industries', href: '#industries' },
+  { label: 'Medical Equipment', href: '#medical-equipment' },
   { label: 'Why LaBrain', href: '#why-us' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -16,6 +17,7 @@ const SERVICES = [
   'Civil & Structural Works',
   'MEP Works',
   'Smart Building Systems',
+  'Medical Equipment Solutions',
   'Operation & Maintenance',
 ]
 
