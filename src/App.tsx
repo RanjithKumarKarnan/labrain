@@ -5,6 +5,7 @@ import Services from './components/Services'
 import SmartSystems from './components/SmartSystems'
 import WhyUs from './components/WhyUs'
 import Industries from './components/Industries'
+import MedicalEquipment from './components/MedicalEquipment'
 import Capabilities from './components/Capabilities'
 import Partnership from './components/Partnership'
 import Contact from './components/Contact'
@@ -21,6 +22,7 @@ function App() {
         <SmartSystems />
         <WhyUs />
         <Industries />
+        <MedicalEquipment />
         <Capabilities />
         <Partnership />
         <Contact />
