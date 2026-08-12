@@ -10,35 +10,37 @@ const SERVICE_OPTIONS = [
   'Engineering Consultancy',
 ]
 
-const RECIPIENTS = ['info@labrain.co', 'Labrain.sa@gmail.com', 'ranjithkarnan2002@gmail.com']
+// Get this key free at https://web3forms.com (enter info@labrain.co, no password needed)
+const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'
+const CC_RECIPIENTS = 'Labrain.sa@gmail.com,ranjithkarnan2002@gmail.com'
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const data = new FormData(e.currentTarget)
-    const name = String(data.get('name') || '')
-    const company = String(data.get('company') || '')
-    const email = String(data.get('email') || '')
-    const phone = String(data.get('phone') || '')
-    const service = String(data.get('service') || '')
-    const message = String(data.get('message') || '')
+    const form = e.currentTarget
+    const data = new FormData(form)
+    data.append('access_key', WEB3FORMS_ACCESS_KEY)
+    data.append('cc', CC_RECIPIENTS)
+    data.append('subject', `New project enquiry from ${data.get('name') || 'website contact form'}`)
 
-    const subject = `New project enquiry from ${name || 'website contact form'}`
-    const body = [
-      `Name: ${name}`,
-      `Company: ${company}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `Service of interest: ${service}`,
-      '',
-      'Project details:',
-      message,
-    ].join('\n')
-
-    window.location.href = `mailto:${RECIPIENTS.join(',')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setSubmitted(true)
+    setStatus('sending')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      })
+      const result = await res.json()
+      if (result.success) {
+        setStatus('sent')
+        form.reset()
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -88,17 +90,16 @@ export default function Contact() {
           </div>
 
           <div className="lg:col-span-3">
-            {submitted ? (
+            {status === 'sent' ? (
               <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-12 text-center">
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gold-500/15">
                   <Send className="h-6 w-6 text-gold-600" />
                 </span>
                 <h3 className="mt-5 font-heading text-xl font-bold text-navy-950">
-                  Almost there — send the email that just opened.
+                  Thank you — we've received your request.
                 </h3>
                 <p className="mt-2 max-w-sm text-sm text-slate-600">
-                  Your request has been pre-filled in your email app addressed to our team. Hit
-                  send there to complete your submission.
+                  Our engineering team will review your requirements and reach out shortly.
                 </p>
               </div>
             ) : (
@@ -106,6 +107,12 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 className="rounded-2xl border border-slate-200 bg-white p-8"
               >
+                {status === 'error' && (
+                  <p className="mb-6 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                    Something went wrong sending your request. Please try again, or reach us
+                    directly at info@labrain.co.
+                  </p>
+                )}
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className="text-sm font-medium text-navy-900">
@@ -193,9 +200,10 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="group mt-6 flex w-full items-center justify-center gap-2 rounded-md bg-navy-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-navy-800 sm:w-auto"
+                  disabled={status === 'sending'}
+                  className="group mt-6 flex w-full items-center justify-center gap-2 rounded-md bg-navy-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-navy-800 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
-                  Send Request
+                  {status === 'sending' ? 'Sending…' : 'Send Request'}
                   <Send className="h-4 w-4 transition group-hover:translate-x-0.5" />
                 </button>
               </form>
