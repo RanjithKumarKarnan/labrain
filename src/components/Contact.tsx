@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import { Mail, MapPin, Phone, Send } from 'lucide-react'
 
 const SERVICE_OPTIONS = [
@@ -10,8 +10,36 @@ const SERVICE_OPTIONS = [
   'Engineering Consultancy',
 ]
 
+const RECIPIENTS = ['info@labrain.co', 'Labrain.sa@gmail.com', 'ranjithkarnan2002@gmail.com']
+
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const data = new FormData(e.currentTarget)
+    const name = String(data.get('name') || '')
+    const company = String(data.get('company') || '')
+    const email = String(data.get('email') || '')
+    const phone = String(data.get('phone') || '')
+    const service = String(data.get('service') || '')
+    const message = String(data.get('message') || '')
+
+    const subject = `New project enquiry from ${name || 'website contact form'}`
+    const body = [
+      `Name: ${name}`,
+      `Company: ${company}`,
+      `Email: ${email}`,
+      `Phone: ${phone}`,
+      `Service of interest: ${service}`,
+      '',
+      'Project details:',
+      message,
+    ].join('\n')
+
+    window.location.href = `mailto:${RECIPIENTS.join(',')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    setSubmitted(true)
+  }
 
   return (
     <section id="contact" className="bg-slate-50 py-24 sm:py-32">
@@ -30,12 +58,20 @@ export default function Contact() {
             </p>
 
             <div className="mt-10 space-y-5">
-              <a href="tel:0549672441" className="flex items-center gap-4 text-navy-900 transition hover:text-gold-600">
+              <div className="flex items-center gap-4 text-navy-900">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm">
                   <Phone className="h-5 w-5 text-gold-600" />
                 </span>
-                <span className="font-medium">0549 672 441</span>
-              </a>
+                <span className="flex flex-wrap items-center gap-x-3 gap-y-1 font-medium">
+                  <a href="tel:0549672441" className="transition hover:text-gold-600">
+                    0549 672 441
+                  </a>
+                  <span className="text-slate-300">|</span>
+                  <a href="tel:0569881944" className="transition hover:text-gold-600">
+                    056 988 1944
+                  </a>
+                </span>
+              </div>
               <a href="mailto:info@labrain.co" className="flex items-center gap-4 text-navy-900 transition hover:text-gold-600">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm">
                   <Mail className="h-5 w-5 text-gold-600" />
@@ -58,18 +94,16 @@ export default function Contact() {
                   <Send className="h-6 w-6 text-gold-600" />
                 </span>
                 <h3 className="mt-5 font-heading text-xl font-bold text-navy-950">
-                  Thank you — we've received your request.
+                  Almost there — send the email that just opened.
                 </h3>
                 <p className="mt-2 max-w-sm text-sm text-slate-600">
-                  Our engineering team will review your requirements and reach out shortly.
+                  Your request has been pre-filled in your email app addressed to our team. Hit
+                  send there to complete your submission.
                 </p>
               </div>
             ) : (
               <form
-                onSubmit={(e) => {
-                  e.preventDefault()
-                  setSubmitted(true)
-                }}
+                onSubmit={handleSubmit}
                 className="rounded-2xl border border-slate-200 bg-white p-8"
               >
                 <div className="grid gap-6 sm:grid-cols-2">
@@ -79,6 +113,7 @@ export default function Contact() {
                     </label>
                     <input
                       id="name"
+                      name="name"
                       required
                       type="text"
                       className="mt-2 w-full rounded-md border border-slate-200 px-4 py-2.5 text-sm text-navy-950 outline-none transition focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20"
@@ -91,6 +126,7 @@ export default function Contact() {
                     </label>
                     <input
                       id="company"
+                      name="company"
                       type="text"
                       className="mt-2 w-full rounded-md border border-slate-200 px-4 py-2.5 text-sm text-navy-950 outline-none transition focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20"
                       placeholder="Company name"
@@ -102,6 +138,7 @@ export default function Contact() {
                     </label>
                     <input
                       id="email"
+                      name="email"
                       required
                       type="email"
                       className="mt-2 w-full rounded-md border border-slate-200 px-4 py-2.5 text-sm text-navy-950 outline-none transition focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20"
@@ -114,6 +151,7 @@ export default function Contact() {
                     </label>
                     <input
                       id="phone"
+                      name="phone"
                       type="tel"
                       className="mt-2 w-full rounded-md border border-slate-200 px-4 py-2.5 text-sm text-navy-950 outline-none transition focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20"
                       placeholder="+966 5X XXX XXXX"
@@ -125,6 +163,7 @@ export default function Contact() {
                     </label>
                     <select
                       id="service"
+                      name="service"
                       className="mt-2 w-full rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm text-navy-950 outline-none transition focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20"
                       defaultValue=""
                     >
@@ -144,6 +183,7 @@ export default function Contact() {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
                       rows={4}
                       className="mt-2 w-full resize-none rounded-md border border-slate-200 px-4 py-2.5 text-sm text-navy-950 outline-none transition focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20"
                       placeholder="Tell us about your project..."
