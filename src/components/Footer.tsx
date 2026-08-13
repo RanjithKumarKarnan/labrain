@@ -74,10 +74,14 @@ export default function Footer() {
                 <MapPin className="h-4 w-4 shrink-0 text-gold-400" />
                 Riyadh, Saudi Arabia
               </li>
-              <li>
+              <li className="flex items-start gap-3 text-sm text-white/60">
                 <a href="tel:0549672441" className="flex items-center gap-3 text-sm text-white/60 transition hover:text-gold-400">
                   <Phone className="h-4 w-4 shrink-0 text-gold-400" />
-                  0549 672 441
+                  0549 672 441 
+                </a>
+                 <p>|</p>
+                  <a href="tel:0569881944" className="flex items-center gap-3 text-sm text-white/60 transition hover:text-gold-400">
+                  056 988 1944
                 </a>
               </li>
               <li>
