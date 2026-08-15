@@ -3,13 +3,14 @@ import { Menu, X, Phone } from 'lucide-react'
 import logo from '../assets/logo.png'
 
 const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Smart Systems', href: '#smart-systems' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Medical Equipment', href: '#medical-equipment' },
-  { label: 'Why LaBrain', href: '#why-us' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/#about' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Smart Systems', href: '/#smart-systems' },
+  { label: 'Industries', href: '/#industries' },
+  { label: 'Clients', href: '/#clients' },
+  { label: 'Medical Equipment', href: '/#medical-equipment' },
+  { label: 'Why LaBrain', href: '/#why-us' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 export default function Header() {
@@ -30,11 +31,11 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
-        <a href="#top" className="flex items-center gap-2.5">
+        <a href="/#top" className="flex items-center gap-2.5">
           <img src={logo} alt="LaBrain" className="h-9 w-auto brightness-0 invert" />
         </a>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -55,7 +56,7 @@ export default function Header() {
             0549 672 441
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             className="rounded-md bg-gold-500 px-5 py-2.5 text-sm font-semibold text-navy-950 transition hover:bg-gold-400"
           >
             Request a Quote
@@ -86,7 +87,7 @@ export default function Header() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-md bg-gold-500 px-5 py-2.5 text-center text-sm font-semibold text-navy-950"
             >

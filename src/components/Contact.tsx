@@ -6,6 +6,7 @@ const SERVICE_OPTIONS = [
   'Electrical / Mechanical Works',
   'HVAC / Plumbing / Fire Fighting',
   'Smart Building Systems',
+  'Logistics & Workforce Support',
   'Operation & Maintenance',
   'Engineering Consultancy',
 ]

@@ -3,22 +3,24 @@ import logo from '../assets/logo.png'
 import skyline from '../assets/about-us/6.jpg'
 
 const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Smart Systems', href: '#smart-systems' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Medical Equipment', href: '#medical-equipment' },
-  { label: 'Why LaBrain', href: '#why-us' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/#about' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Smart Systems', href: '/#smart-systems' },
+  { label: 'Industries', href: '/#industries' },
+  { label: 'Clients', href: '/#clients' },
+  { label: 'Medical Equipment', href: '/#medical-equipment' },
+  { label: 'Why LaBrain', href: '/#why-us' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 const SERVICES = [
-  'General Contracting',
-  'Civil & Structural Works',
-  'MEP Works',
-  'Smart Building Systems',
-  'Medical Equipment Solutions',
-  'Operation & Maintenance',
+  { label: 'General Contracting', href: '/#services' },
+  { label: 'Civil & Structural Works', href: '/#services' },
+  { label: 'MEP Works', href: '/#services' },
+  { label: 'Smart Building Systems', href: '/#smart-systems' },
+  { label: 'Medical Equipment Solutions', href: '/#medical-equipment' },
+  { label: 'Logistics & Workforce Support', href: '/logistics' },
+  { label: 'Operation & Maintenance', href: '/#services' },
 ]
 
 export default function Footer() {
@@ -58,8 +60,10 @@ export default function Footer() {
             </h3>
             <ul className="mt-5 space-y-3">
               {SERVICES.map((s) => (
-                <li key={s} className="text-sm text-white/60">
-                  {s}
+                <li key={s.label}>
+                  <a href={s.href} className="text-sm text-white/60 transition hover:text-gold-400">
+                    {s.label}
+                  </a>
                 </li>
               ))}
             </ul>

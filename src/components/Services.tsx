@@ -15,6 +15,8 @@ import {
   ClipboardList,
   Compass,
   HeartPulse,
+  Bus,
+  ArrowRight,
 } from 'lucide-react'
 
 const SERVICES = [
@@ -34,7 +36,8 @@ const SERVICES = [
   { icon: ClipboardList, title: 'Project Management', desc: 'Disciplined planning, tracking, and reporting.' },
   { icon: Compass, title: 'Engineering Consultancy', desc: 'Technical advisory across the project lifecycle.' },
   { icon: HeartPulse, title: 'Medical Equipment Solutions', desc: 'Supply, installation, calibration, and maintenance of healthcare equipment.' },
-]
+  { icon: Bus, title: 'Logistics & Workforce Support', desc: 'Vehicle rental, workforce accommodation, employee transport, and on-site project logistics.', href: '/logistics' },
+] as const
 
 export default function Services() {
   return (
@@ -54,18 +57,35 @@ export default function Services() {
         </div>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map(({ icon: Icon, title, desc }) => (
-            <div
-              key={title}
-              className="group rounded-xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-gold-500/40 hover:shadow-lg hover:shadow-navy-950/5"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-navy-950 transition group-hover:bg-gold-500">
-                <Icon className="h-5 w-5 text-gold-400 transition group-hover:text-navy-950" />
-              </span>
-              <h3 className="mt-4 font-heading text-base font-bold text-navy-950">{title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-slate-600">{desc}</p>
-            </div>
-          ))}
+          {SERVICES.map(({ icon: Icon, title, desc, href }) => {
+            const content = (
+              <>
+                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-navy-950 transition group-hover:bg-gold-500">
+                  <Icon className="h-5 w-5 text-gold-400 transition group-hover:text-navy-950" />
+                </span>
+                <h3 className="mt-4 font-heading text-base font-bold text-navy-950">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-slate-600">{desc}</p>
+                {href && (
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-600">
+                    View service
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                  </span>
+                )}
+              </>
+            )
+            const className =
+              'group rounded-xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-gold-500/40 hover:shadow-lg hover:shadow-navy-950/5'
+
+            return href ? (
+              <a key={title} href={href} className={`${className} block`}>
+                {content}
+              </a>
+            ) : (
+              <div key={title} className={className}>
+                {content}
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
