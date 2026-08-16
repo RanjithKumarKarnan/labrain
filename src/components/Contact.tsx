@@ -12,28 +12,39 @@ const SERVICE_OPTIONS = [
   'Others',
 ]
 
-// Get this key free at https://web3forms.com (enter info@labrain.co, no password needed)
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'
-const CC_RECIPIENTS = 'Labrain.sa@gmail.com,ranjithkarnan2002@gmail.com'
+const GOOGLE_SCRIPT_URL =
+  (import.meta.env.VITE_GOOGLE_SCRIPT_URL as string | undefined) ||
+  'https://script.google.com/macros/s/AKfycbzLNgJczhGKueMoIgT3cEKA2BUHSZTlaEEmnUh9ui4JZ9RbaFdTqUlUHg3AnVcLfEOO/exec'
 
 export default function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!GOOGLE_SCRIPT_URL) {
+      setStatus('error')
+      return
+    }
+
     const form = e.currentTarget
     const data = new FormData(form)
-    data.append('access_key', WEB3FORMS_ACCESS_KEY)
-    data.append('cc', CC_RECIPIENTS)
-    data.append('subject', `New project enquiry from ${data.get('name') || 'website contact form'}`)
+    const payload = {
+      name: String(data.get('name') || ''),
+      company: String(data.get('company') || ''),
+      email: String(data.get('email') || ''),
+      phone: String(data.get('phone') || ''),
+      service: String(data.get('service') || ''),
+      message: String(data.get('message') || ''),
+    }
 
     setStatus('sending')
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        body: data,
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload),
       })
-      const result = await res.json()
+      const result = (await res.json()) as { success?: boolean }
       if (result.success) {
         setStatus('sent')
         form.reset()
