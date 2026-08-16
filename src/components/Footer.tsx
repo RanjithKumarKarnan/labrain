@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Industries', href: '/#industries' },
   { label: 'Clients', href: '/#clients' },
   { label: 'Medical Equipment', href: '/#medical-equipment' },
+  { label: 'Logistics', href: '/#logistics' },
   { label: 'Why LaBrain', href: '/#why-us' },
   { label: 'Contact', href: '/#contact' },
 ]
@@ -19,7 +20,7 @@ const SERVICES = [
   { label: 'MEP Works', href: '/#services' },
   { label: 'Smart Building Systems', href: '/#smart-systems' },
   { label: 'Medical Equipment Solutions', href: '/#medical-equipment' },
-  { label: 'Logistics & Workforce Support', href: '/logistics' },
+  { label: 'Logistics & Workforce Support', href: '/#logistics' },
   { label: 'Operation & Maintenance', href: '/#services' },
 ]
 
@@ -29,7 +30,7 @@ export default function Footer() {
       <img src={skyline} alt="" className="absolute inset-0 h-full w-full object-cover opacity-15" />
       <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/95 to-navy-950" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative section-x">
         <div className="grid gap-12 pb-16 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <img src={logo} alt="LaBrain" className="h-9 w-auto brightness-0 invert" />

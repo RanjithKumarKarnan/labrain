@@ -27,7 +27,7 @@ export default function SmartSystems() {
   return (
     <section id="smart-systems" className="relative overflow-hidden bg-navy-950 py-24 sm:py-32">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(212,175,55,0.12),transparent_50%)]" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative section-x">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-gold-400">
             Specialized Engineering Systems

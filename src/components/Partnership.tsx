@@ -18,7 +18,7 @@ export default function Partnership() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/95 to-navy-950/70" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative section-x">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-gold-400">
             Our Partnership Approach

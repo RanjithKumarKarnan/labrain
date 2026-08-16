@@ -35,7 +35,7 @@ const SECTORS = [
 export default function MedicalEquipment() {
   return (
     <section id="medical-equipment" className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="section-x">
         <div className="max-w-2xl">
           <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-gold-600">
             <HeartPulse className="h-4 w-4" />

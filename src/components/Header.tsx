@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Industries', href: '/#industries' },
   { label: 'Clients', href: '/#clients' },
   { label: 'Medical Equipment', href: '/#medical-equipment' },
+  { label: 'Logistics', href: '/#logistics' },
   { label: 'Why LaBrain', href: '/#why-us' },
   { label: 'Contact', href: '/#contact' },
 ]
@@ -30,7 +31,7 @@ export default function Header() {
         scrolled ? 'bg-navy-950/95 shadow-lg shadow-black/10 backdrop-blur' : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
+      <div className="section-x flex w-full items-center justify-between py-3">
         <a href="/#top" className="flex items-center gap-2.5">
           <img src={logo} alt="LaBrain" className="h-9 w-auto brightness-0 invert" />
         </a>
@@ -74,7 +75,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-navy-950 px-6 py-4 lg:hidden">
+        <div className="section-x border-t border-white/10 bg-navy-950 py-4 lg:hidden">
           <nav className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => (
               <a

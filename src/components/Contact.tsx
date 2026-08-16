@@ -9,6 +9,7 @@ const SERVICE_OPTIONS = [
   'Logistics & Workforce Support',
   'Operation & Maintenance',
   'Engineering Consultancy',
+  'Others',
 ]
 
 // Get this key free at https://web3forms.com (enter info@labrain.co, no password needed)
@@ -46,7 +47,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="bg-slate-50 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="section-x">
         <div className="grid gap-16 lg:grid-cols-5 lg:gap-12">
           <div className="lg:col-span-2">
             <p className="text-sm font-semibold uppercase tracking-widest text-gold-600">

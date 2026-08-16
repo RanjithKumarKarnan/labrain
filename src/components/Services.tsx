@@ -36,13 +36,13 @@ const SERVICES = [
   { icon: ClipboardList, title: 'Project Management', desc: 'Disciplined planning, tracking, and reporting.' },
   { icon: Compass, title: 'Engineering Consultancy', desc: 'Technical advisory across the project lifecycle.' },
   { icon: HeartPulse, title: 'Medical Equipment Solutions', desc: 'Supply, installation, calibration, and maintenance of healthcare equipment.' },
-  { icon: Bus, title: 'Logistics & Workforce Support', desc: 'Vehicle rental, workforce accommodation, employee transport, and on-site project logistics.', href: '/logistics' },
+  { icon: Bus, title: 'Logistics & Workforce Support', desc: 'Vehicle rental, workforce accommodation, employee transport, and on-site project logistics.', href: '#logistics' },
 ] as const
 
 export default function Services() {
   return (
     <section id="services" className="bg-slate-50 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="section-x">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-gold-600">
             Core Services

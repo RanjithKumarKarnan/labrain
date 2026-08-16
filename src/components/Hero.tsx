@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/80 to-navy-950/40" />
       <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/40 to-transparent" />
 
-      <div className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-6 pt-28 pb-16 lg:px-8">
+      <div className="relative mx-auto flex w-full flex-1 items-center section-x pt-28 pb-16">
         <div className="max-w-2xl">
           <div className="mb-6 flex items-center gap-2 text-sm font-medium text-gold-400">
             <MapPin className="h-4 w-4" />
@@ -62,7 +62,7 @@ export default function Hero() {
       </div>
 
       <div className="relative border-t border-white/10 bg-navy-950/60 backdrop-blur-sm">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-6 sm:grid-cols-4 lg:px-8">
+        <div className="section-x grid grid-cols-2 gap-6 py-6 sm:grid-cols-4">
           {[
             ['12+', 'Core Service Lines'],
             ['9', 'Industry Sectors'],
