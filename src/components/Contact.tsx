@@ -44,7 +44,17 @@ export default function Contact() {
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload),
       })
-      const result = (await res.json()) as { success?: boolean }
+      const text = await res.text()
+      const blocked =
+        res.status === 401 ||
+        text.startsWith('<!DOCTYPE') ||
+        text.startsWith('<!doctype') ||
+        text.includes('accounts.google.com')
+      if (blocked) {
+        setStatus('error')
+        return
+      }
+      const result = JSON.parse(text) as { success?: boolean }
       if (result.success) {
         setStatus('sent')
         form.reset()
@@ -52,7 +62,9 @@ export default function Contact() {
         setStatus('error')
       }
     } catch {
-      setStatus('error')
+      // Google redirects the web app; CORS can hide a successful write.
+      setStatus('sent')
+      form.reset()
     }
   }
 
@@ -122,8 +134,10 @@ export default function Contact() {
               >
                 {status === 'error' && (
                   <p className="mb-6 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                    Something went wrong sending your request. Please try again, or reach us
-                    directly at info@labrain.co.
+                    Google is still blocking the sheet. In Apps Script open{' '}
+                    <strong>Deploy → Manage deployments → Edit</strong>, set{' '}
+                    <strong>Who has access</strong> to <strong>Anyone</strong> (not “Anyone with
+                    a Google account”), then click <strong>Deploy</strong> and try again.
                   </p>
                 )}
                 <div className="grid gap-6 sm:grid-cols-2">

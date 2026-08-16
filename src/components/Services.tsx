@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react'
 import {
   HardHat,
   Route,
@@ -19,7 +20,12 @@ import {
   ArrowRight,
 } from 'lucide-react'
 
-const SERVICES = [
+const SERVICES: {
+  icon: LucideIcon
+  title: string
+  desc: string
+  href?: string
+}[] = [
   { icon: HardHat, title: 'General Contracting', desc: 'Full-scope contracting delivered under one accountable team.' },
   { icon: Route, title: 'Civil Works', desc: 'Structural and civil execution built to specification.' },
   { icon: Building2, title: 'Infrastructure Works', desc: 'Infrastructure engineered for long-term performance.' },
@@ -37,7 +43,7 @@ const SERVICES = [
   { icon: Compass, title: 'Engineering Consultancy', desc: 'Technical advisory across the project lifecycle.' },
   { icon: HeartPulse, title: 'Medical Equipment Solutions', desc: 'Supply, installation, calibration, and maintenance of healthcare equipment.' },
   { icon: Bus, title: 'Logistics & Workforce Support', desc: 'Vehicle rental, workforce accommodation, employee transport, and on-site project logistics.', href: '#logistics' },
-] as const
+]
 
 export default function Services() {
   return (
