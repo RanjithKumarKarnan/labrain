@@ -1,33 +1,36 @@
 import { ArrowRight, Building2, Bus, Forklift, Truck } from 'lucide-react'
+import truckImg from '../assets/logistics/truck-and-commercial.webp'
+import transportImg from '../assets/logistics/employee-transport.jpg'
+import logisticsImg from '../assets/logistics/project-logistics.webp'
 
 const SERVICES = [
   {
     icon: Truck,
     title: 'Truck & Commercial Vehicle Rental',
     desc: 'Rental of commercial transport vehicles, including light and medium-duty trucks such as Dyna / flatbed trucks, to support material movement, site logistics, and operational transport needs.',
-    img: '/logistics/trucks.jpg',
-    alt: 'Commercial truck supporting site logistics and material movement',
+    img: truckImg,
+    alt: 'Commercial trucks for site logistics and material movement',
   },
   {
     icon: Building2,
     title: 'Workforce Accommodation',
     desc: 'LaBrain offers workforce accommodation rental solutions, providing clean, organized, and well-maintained labor housing to support project teams and operational staff.',
     img: '/logistics/accommodation.jpg',
-    alt: 'Workforce accommodation building for project teams',
+    alt: 'Workforce accommodation for project teams',
   },
   {
     icon: Bus,
     title: 'Employee Transportation',
     desc: 'Reliable transportation solutions for employees and project staff through modern buses and crew vans, ensuring safe and efficient daily mobility.',
-    img: '/logistics/transport.jpg',
+    img: transportImg,
     alt: 'Employee transportation bus for daily project staff mobility',
   },
   {
     icon: Forklift,
     title: 'Project Logistics Support',
     desc: 'Integrated logistics support including material handling, temporary storage coordination, supply movement, and on-site logistics assistance for project operations.',
-    img: '/logistics/warehouse.jpg',
-    alt: 'Warehouse and material handling support for project logistics',
+    img: logisticsImg,
+    alt: 'Project logistics and material handling support',
   },
 ]
 

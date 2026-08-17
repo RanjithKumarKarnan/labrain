@@ -57,6 +57,15 @@ export default function Hero() {
               <Download className="h-4 w-4" />
               Company Profile
             </a>
+            <a
+              href="/LaBrain-Medical-Equipment-Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 rounded-md border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/5"
+            >
+              <Download className="h-4 w-4" />
+              Medical Profile
+            </a>
           </div>
         </div>
       </div>

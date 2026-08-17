@@ -38,6 +38,24 @@ export default function Footer() {
               Where Engineering Meets Intelligence. Riyadh-based engineering and contracting
               across civil, electrical, mechanical, and smart-building systems.
             </p>
+            <div className="mt-5 flex flex-col gap-2">
+              <a
+                href="/LaBrain-Company-Profile.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white/60 transition hover:text-gold-400"
+              >
+                Download Company Profile
+              </a>
+              <a
+                href="/LaBrain-Medical-Equipment-Profile.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white/60 transition hover:text-gold-400"
+              >
+                Download Medical Equipment Profile
+              </a>
+            </div>
           </div>
 
           <div>
