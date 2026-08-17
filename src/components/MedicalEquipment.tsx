@@ -25,7 +25,7 @@ const SECTORS = [
   'Clinics',
   'Diagnostic Centers',
   'Laboratories',
-  'Day Surgery Centers',
+  'One Day Surgery Centers',
   'Rehabilitation Centers',
   'Specialized Healthcare Facilities',
   'Healthcare Projects',
